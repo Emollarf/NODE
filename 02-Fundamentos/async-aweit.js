@@ -1,5 +1,3 @@
-
-
 const empleados = [
     {
         id:1,
@@ -52,30 +50,23 @@ const getSalario = (id) => {
     });
 }
 
-const id = 10; 
-/* getEmpleado(id)
-    .then(empleado => console.log(empleado))
-    .catch(err => console.log(err))
+const getInfoUsuario = async()=>{
+    
+    try {
+        const empleado = await getEmpleado (id);
+        const salario = await getSalario (id);
+    
+        return `El salario de ${empleado} es ${salario}`
+    }
+    catch (error){
+        throw error; // llama el catch 
+    }
+    
+} 
 
-getSalario(id)
-    .then (salario => console.log(salario))
-    .catch(err=> console.log(err)) */
 
-/* getEmpleado(id)
-    .then(empleado => {
-        getSalario(id)
-        .then(salario => {
-            console.log('El empleado:', empleado, 'tiene un salario: ' , salario);
-        })
-        .catch(err => console.log(err))
-    })
-    .catch(err => console.log(err)) */
+const id = 3;
 
-    let nombre; 
-    getEmpleado(id)
-        .then (empleado => {
-            nombre = empleado;
-            return getSalario(id)
-        } )
-        .then (salario => console.log('El empleado', nombre , 'tiene un salario:', salario))
-        .catch (err => console.log(err))
+getInfoUsuario()
+    .then (msg => console.log(msg))
+    .catch(error => console.log(error))
